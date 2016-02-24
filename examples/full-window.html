@@ -20,11 +20,15 @@
 	}
 	html, form {
 		padding: 0px;
+		border: 5px solid #bbb;
+		height: 500px;
+		width: 500px;
+		margin:0 auto;
 	}
-	html, body, fieldset {
+	html, body, fieldset ,button{
 		background: #aaa;
 	}
-	fieldset {
+	fieldset,button{
 		position: absolute;
 		border: 5px solid #aaa;
 		background: #aaa;
@@ -35,30 +39,33 @@
 		outline: 5px solid #aaa;
 		background: #fff;
 	}
-	input[type=submit], input[type=reset] {
+	input[type=submit], input[type=reset],button{
 		font-size: larger;
 	}
   </style>
   <link rel="stylesheet" href="../assets/jquery.signaturepad.css">
   <!--[if lt IE 9]><script src="../assets/flashcanvas.js"></script><![endif]-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+  <script src="../jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 	<form method="POST" action="">
 		<canvas class="pad"></canvas>
 		<fieldset>
 			<input type="reset" value="clear" />
+			<input type="button" value="getJson" id="getJson"/>
+			<input type="button" value="regenerate" id="regenerate"/>
 		</fieldset>
 	</form>
 
   <script src="../jquery.signaturepad.js"></script>
   <script>
+  var sig;
   (function(window) {
     var $canvas,
         onResize = function(event) {
           $canvas.attr({
-            height: window.innerHeight,
-            width: window.innerWidth
+            height: 500,
+            width: 500
           });
         };
 
@@ -68,7 +75,7 @@
       window.addEventListener('resize', onResize, false);
       onResize();
 
-      $('form').signaturePad({
+      var $sigpad = $('form').signaturePad({
         drawOnly: true,
         defaultAction: 'drawIt',
         validateFields: false,
@@ -83,6 +90,17 @@
         typeItDesc: null,
         drawItDesc: null
       });
+      $("#getJson").click(function(){
+    	  sig = $sigpad.getSignature();
+    	  alert(sig);
+    	  onResize();
+      });
+
+      $("#regenerate").click(function(){
+    	  var api = $('form').signaturePad({displayOnly:true});
+    	  api.regenerate(sig);
+      });
+
     });
   }(this));
   </script>
