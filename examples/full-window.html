@@ -46,6 +46,7 @@
   <link rel="stylesheet" href="../assets/jquery.signaturepad.css">
   <!--[if lt IE 9]><script src="../assets/flashcanvas.js"></script><![endif]-->
   <script src="../jquery/dist/jquery.min.js"></script>
+  <script src="../sigPadCompression.js"></script>
 </head>
 <body>
 	<form method="POST" action="">
@@ -93,7 +94,8 @@
       $("#getJson").click(function(){
     	  sig = $sigpad.getSignature();
     	  alert(sig);
-    	  onResize();
+    	  var sigStr = $sigpad.getSignatureString();
+    	  alert(sigStr);
       });
 
       $("#regenerate").click(function(){
