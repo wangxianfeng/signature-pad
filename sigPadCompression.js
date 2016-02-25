@@ -2,6 +2,8 @@
     resolution = a representation of the resolution in
 	pixels of the canvas which this signature will be drawn
 	e.g. {x:800,y:200}
+	解压方法
+	resolution为canvas的像素分辨率，格式为：{x:800,y:200}
 */
 var inflateToJsonSignature = function (deflatedSig, resolution) {
     var components = [],
@@ -48,6 +50,8 @@ var inflateToJsonSignature = function (deflatedSig, resolution) {
     resolution = a representation of the resolution in
     pixels of the canvas which this signature came from
     e.g. {x:800,y:200}
+    压缩方法
+    resolution为canvas的像素分辨率，格式为：{x:800,y:200}
 */
 var deflateFromJsonSignature = function (jsonSig, resolution) {
     var replacedSig,

@@ -96,9 +96,9 @@
     	  alert(sig);
     	  var sigStr = $sigpad.getSignatureString();
     	  alert(sigStr);
-    	  var compressSigStr = deflateFromJsonSignature(sigStr,false);
+    	  var compressSigStr = deflateFromJsonSignature(sigStr);
     	  alert(compressSigStr);
-    	  var origSigStr = inflateToJsonSignature(compressSigStr,false);
+    	  var origSigStr = inflateToJsonSignature(compressSigStr);
     	  alert(origSigStr);
       });
 
